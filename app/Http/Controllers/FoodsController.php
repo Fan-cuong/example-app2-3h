@@ -15,24 +15,11 @@ class FoodsController extends Controller
      */
     public function index()
     {
-        //hien tat cac ra man hinh tat ca
         $foods=Food::all(); // SELECT* FROM foods;
-        // $foods=Food::where('name','=','sushi')
-                                                // ->get();
-        // dd($foods); 
         return view('foods.index',[
             'foods'=>$foods,
         ]);
-    // // }
-        // $food=Food::where('name','=','food2')
-        //                                         ->firstOrFail();
-        // return view('foods.index',[
-        //     'food'=>$food,
-        // ]);
-        // return view('foods.index');
     }
-    
-
     /**
      * Show the form for creating a new resource.
      *
@@ -42,7 +29,6 @@ class FoodsController extends Controller
     {
         return view('foods.create');
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -51,14 +37,6 @@ class FoodsController extends Controller
      */
     public function store(Request $request)
     {
-        // dd('this is a store');
-        // cach 1
-        // $food = new Food();
-        // $food->name =        $request->input('name'); 
-        // $food->count =       $request->input('count'); 
-        // $food->description = $request->input('description');
-
-        // cach 2:
         $food=Food::create([
             'name'=>$request->input('name'),
             'count'=>$request->input('count'),
@@ -66,7 +44,6 @@ class FoodsController extends Controller
         ]);
         $food->save(); //save to Database 
         return redirect('/foods');
-
     }
 
     /**
@@ -77,11 +54,9 @@ class FoodsController extends Controller
      */
     public function show($id)
     {
-        // dd('this is a new resource'.$id);
         $food=Food::find($id);
         $category=Category::find($food->category_id);
-        dd($food);
-        // dd($category);
+        // dd($food);
         $food->category=$category;
         return view('foods.show')->with('food',$food);
     }
@@ -94,13 +69,9 @@ class FoodsController extends Controller
      */
     public function edit($id)
     {
-        // dd($id);
-        // $food=Food::find($id)->first();
         $food=Food::find($id);
-        // dd($food);
         return view('foods.edit')->with('food',$food);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -129,7 +100,6 @@ class FoodsController extends Controller
     {
         $food=Food::find($id);
         $food->delete();
-        // dd($id);
         return redirect('/foods');
     }
 }
