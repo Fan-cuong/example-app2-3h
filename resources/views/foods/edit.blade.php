@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
     <h1>Foods/ Edit page</h1>
-    {{-- <img src="{{asset('storage/proxy1.png')}} " width="" height="" alt=""> --}}
 
     <form action="/foods/{{$food->id}}" method="post">
         @csrf

@@ -16,9 +16,7 @@ class FoodsController extends Controller
     public function index()
     {
         $foods=Food::all(); // SELECT* FROM foods;
-        return view('foods.index',[
-            'foods'=>$foods,
-        ]);
+        return view('foods.index',[ 'foods'=>$foods ]);
     }
     /**
      * Show the form for creating a new resource.

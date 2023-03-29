@@ -18,10 +18,13 @@ return new class extends Migration
             $table->string('name');
             $table->integer('count');
             $table->longText('description');
+            $table->unsignedBigInteger('category_id');
             $table->timestamps();
         //  khoa ngoai
-        //     $table->unsignedBigInteger('category_id');
-        //     $table ->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
+            // $table ->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
+            $table ->foreign('category_id')->references('id')
+                                            ->on('categories')
+                                            ->cascadeOnDelete();
         //     $table ->foreignId('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
         //     $table->foreignId('category_id')->constrained('categories');
         //     ->onDelete('set null');
