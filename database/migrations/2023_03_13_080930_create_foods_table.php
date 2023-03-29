@@ -14,28 +14,26 @@ return new class extends Migration
     public function up()
     {
         Schema::create('foods', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->integer('count');
-            $table->longText('description');
+            $table->id();
+            $table->string('name')->nullable();
+            $table->integer('count')->nullable();
+            $table->longText('description')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->timestamps();
+
+            // $table->foreignId('category_id')->constrained();
+            // $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+
+            // $table->foreign('category_id')->references('id')->on('categories');
         //  khoa ngoai
-            // $table ->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
-            $table ->foreign('category_id')->references('id')
-                                            ->on('categories')
-                                            ->cascadeOnDelete();
+                                            
         //     $table ->foreignId('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
         //     $table->foreignId('category_id')->constrained('categories');
         //     ->onDelete('set null');
+        // $table ->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
+
         });
-    //  mot category co nhieu foods
-        // Schema::create('categories', function (Blueprint $table) {
-        //     $table->increments('id');
-        //     $table->string('name');
-        //     $table->longText('description');
-        //     $table->timestamps();
-        // });
     }
 
     /**

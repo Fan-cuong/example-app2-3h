@@ -14,11 +14,11 @@ class Food extends Model
     protected $fillable=[
         'name',
         'count',
-        'category_id',
         'description',
+        'category_id',
     ];
     public function category(){
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class,'category_id','id');
     }
 
 }
