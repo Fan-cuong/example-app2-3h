@@ -52,9 +52,9 @@ class FoodsController extends Controller
      */
     public function show($id)
     {
+        // dd($food);
         $food=Food::find($id);
         $category=Category::find($food->category_id);
-        // dd($food);
         $food->category=$category;
         return view('foods.show')->with('food',$food);
     }
@@ -84,6 +84,7 @@ class FoodsController extends Controller
             'name'=>$request->input('name'),
             'count'=>$request->input('count'),
             'description'=>$request->input('description'),
+            'category_id'=>$request->input('category_id'),
         ]);
         return redirect('/foods');
     }

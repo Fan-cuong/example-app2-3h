@@ -6,10 +6,14 @@
     @foreach ($foods as $food)
         <li class="list-group-item d-flex justify-content-between align-items-start">
             <div class="ms-2 me-auto">
+
                 <div class="fw-bold"><a href="/foods/{{$food->id}} "> {{ $food->name }}</a></div>
+
                 <div class=""> {{ $food->description }}</div>
+
             </div>
             <span class="badge bg-primary rounded-pill ">{{ $food->count }}</span>
+            {{-- <span class="badge bg-primary rounded-pill ">{{ $food->category_id }}</span> --}}
             <button class="btn btn-outline-secondary" type="button">
                 <span class="spinner-border spinner-border-sm"></span>
                 <a href="foods/{{ $food->id }}/edit"> Edit </a>
